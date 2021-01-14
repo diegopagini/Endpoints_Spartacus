@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { translations, translationChunksConfig } from '@spartacus/assets';
-import { B2cStorefrontModule } from '@spartacus/storefront';
+import { B2cStorefrontModule, CheckoutConfig } from '@spartacus/storefront';
 import { ConfigModule, RoutingConfig } from '@spartacus/core';
 
 @NgModule({
@@ -22,6 +22,11 @@ import { ConfigModule, RoutingConfig } from '@spartacus/core';
         },
       },
     } as RoutingConfig),
+    ConfigModule.withConfig({
+      checkout: {
+        guest: true,
+      },
+    } as CheckoutConfig),
     B2cStorefrontModule.withConfig({
       backend: {
         occ: {
