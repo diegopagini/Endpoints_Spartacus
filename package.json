@@ -26,6 +26,7 @@
     "@ngrx/effects": "~9.1.0",
     "@ngrx/router-store": "~9.1.0",
     "@ngrx/store": "~9.1.0",
+    "@ngrx/store-devtools": "^10.1.2",
     "@spartacus/assets": "^2.1.5",
     "@spartacus/core": "^2.1.5",
     "@spartacus/storefront": "^2.1.5",

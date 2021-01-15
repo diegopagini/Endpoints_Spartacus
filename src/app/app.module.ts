@@ -3,20 +3,27 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { translations, translationChunksConfig } from '@spartacus/assets';
-import { B2cStorefrontModule, CheckoutConfig } from '@spartacus/storefront';
+import {
+  B2cStorefrontModule,
+  CheckoutConfig,
+  IconModule,
+} from '@spartacus/storefront';
 import { ConfigModule, RoutingConfig } from '@spartacus/core';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    StoreDevtoolsModule.instrument(),
     ConfigModule.withConfig({
       routing: {
         routes: {
           product: {
             paths: [
               'customproperty/:productCode/:prettyName',
-              'buymethisamazingpowertool/:productCode/:name/',
+              'buyMeThisAmazingPowerTool/:productCode/:name',
+              'buyMeThisAmazingPowerTool/:productCode',
             ],
           },
         },
@@ -33,7 +40,10 @@ import { ConfigModule, RoutingConfig } from '@spartacus/core';
           baseUrl: 'https://spartacus-demo.eastus.cloudapp.azure.com:8443',
           prefix: '/occ/v2/',
           endpoints: {
-            // product: 'products/${productCode}?fields=DEFAULT,customAttribute',
+            product: {
+              details:
+                'products/${productCode}?fields=averageRating,stock(DEFAULT),description,availableForPickup,code,url,price(DEFAULT),numberOfReviews,manufacturer,categories(FULL),priceRange,multidimensional,configuratorType,configurable,tags,images(FULL)',
+            },
           },
         },
       },
